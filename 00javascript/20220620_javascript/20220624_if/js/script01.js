@@ -4,7 +4,7 @@ console.log(userInput)
 if(userInput != "가위" && userInput != "바위" && userInput != "보"){
     alert("가위,바위,보 중 하나를 입력하세요")
 }else{
-    //가위,바위,보를 실행
+    //가위,바위,보를 넣으면 실행
     var num = Math.floor(Math.random()*10); //Math.random() 난수(0~1값)
     console.log(num)                        //math.floor() 소수점 버림
 
