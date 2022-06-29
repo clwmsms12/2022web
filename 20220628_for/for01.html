@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{background-color: pink;}
+        div{background: skyblue;}
+        .box{background: red;}
+    </style>
+</head>
+<body>
+    <div id="box" class="box">1</div>
+    <div>2</div>
+    <div  class="box">3</div>
+    <script>
+        // 1. 3단for문 작성하여 document출력
+        // 2. 3단for문 작성, 변수에 누적저장하여 console.log출력
+        // 3. 3단for문 작성, 변수에 누적저장하여 각 테그, 아이디, 클레스에 출력
+
+        let gugudan = "";
+        
+        for(let i=1;i<=9;i++){
+           gugudan += `3 x ${i} = ${ 3*i }<br>`
+        }
+        console.log(gugudan)
+        
+        document.getElementById("box").innerHTML=gugudan
+        // document.getElementsByTagName("div")[1].innerHTML=gugudan
+        // document.getElementsByClassName("box")[1].innerHTML=gugudan
+    </script>
+
+
+
+</body>
+</html>
