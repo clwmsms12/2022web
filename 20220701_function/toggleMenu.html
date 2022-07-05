@@ -48,7 +48,20 @@
             document.querySelector("#box").classList.toggle("active");
         })
 
-        
+
+        //스크립트로 하는법
+        let on = true
+        $(".toggle").click(function(){
+            if(on == true){
+                $(".toggle").addClass("active")
+                $("#box").addClass("active")
+                on = false;
+            }else{
+                $(".toggle").removeClass("active")
+                $("#box").removeClass("active")
+                on = true;
+            }
+        })
     </script>
 </body>
 </html>
