@@ -44,3 +44,25 @@ $("#oslide2").owlCarousel({
         990:{items:4}
     }
 })
+
+$(".view .vPopup").magnificPopup({
+    type:"image",
+    gallery: {
+        enabled: true,
+        navigateByImgClick: true,
+        preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+    },
+})
+
+
+console.log(window.innerHeight);
+const lazyLoad = document.querySelectorAll(".lazy-load");
+window.addEventListener("scroll",function(){
+    lazyLoad.forEach(function(item){
+        const rect = item.getBoundingClientRect().top
+        console.log(rect);
+        if(rect <= window.innerHeight){
+            item.classList.add("fade")
+        }
+    })
+})
