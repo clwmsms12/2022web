@@ -28,11 +28,12 @@ ul, li {
 }
 .navTop .gnb li {
   height: 100%;
-  background: pink;
+}
+.navTop .gnb li:hover, .navTop .gnb li.active {
+  background: skyblue;
 }
 .navTop .gnb li a {
   height: 100%;
-  background: skyblue;
   padding: 0 10px;
   display: flex;
   justify-content: center;

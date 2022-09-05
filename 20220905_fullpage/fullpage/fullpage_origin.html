@@ -18,22 +18,39 @@
     <h1><a href="#">LOGO</a></h1>
     <nav class="gnb">
         <ul>
-            <li><a href="#">menu1</a></li>
-            <li><a href="#">menu2</a></li>
-            <li><a href="#">menu3</a></li>
-            <li><a href="#">menu4</a></li>
+            <li data-menuanchor="m1st"><a href="#m1st">menu1</a></li>
+            <li data-menuanchor="m2st"><a href="#m2st">menu2</a></li>
+            <li data-menuanchor="m3st"><a href="#m3st">menu3</a></li>
+            <li data-menuanchor="m4st"><a href="#m4st">menu4</a></li>
         </ul>
     </nav>
 </div>
 <div id="fullpage">
-    <div class="section page1 bg-info">
+    <!-- section 1      가운데 정렬상태 따로따로 조절하려면 wrap으로 감싸야함!-->
+    <div class="section page1 bg-info" data-anchor="m1st">
         <div class="wrap bg-dark ">
             <div class="container text-center bg-success">
                 Lorem ipsum dolor sit amet.
             </div>
         </div>
     </div>
-    <div class="section page2 bg-primary">
+
+    <!-- section 2 -->
+    <div class="section page2 bg-primary" data-anchor="m2st">
+        <div class="container text-center bg-success">
+            Lorem ipsum dolor sit amet.
+        </div>
+    </div>
+
+    <!-- section 3 -->
+    <div class="section page3" data-anchor="m3st">
+        <div class="container text-center bg-success">
+            Lorem ipsum dolor sit amet.
+        </div>
+    </div>
+
+    <!-- section 4 -->
+    <div class="section page4 bg-primary" data-anchor="m4st">
         <div class="container text-center bg-success">
             Lorem ipsum dolor sit amet.
         </div>
