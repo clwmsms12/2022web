@@ -1,0 +1,24 @@
+*{margin: 0;padding: 0;}
+a:link,a:visited{text-decoration: none;}
+ul,li{list-style: none;}
+
+.nav{
+    position: fixed;z-index: 1;
+    width: 100%;background: pink;
+}
+
+.navMenu{
+    margin-left: auto;
+    ul{
+        display: flex;height: 100%;
+        li{
+            height: 100%;
+            &:hover,&.active{background: green;}
+            a{
+                display: flex;height: 100%;
+                padding: 0 30px;
+                justify-content: center;align-items: center;
+            }
+        }
+    }
+}

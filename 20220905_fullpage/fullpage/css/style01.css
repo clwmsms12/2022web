@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
+ul, li {
+  list-style: none;
+}
+
+.nav {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  background: pink;
+}
+
+.navMenu {
+  margin-left: auto;
+}
+.navMenu ul {
+  display: flex;
+  height: 100%;
+}
+.navMenu ul li {
+  height: 100%;
+}
+.navMenu ul li:hover, .navMenu ul li.active {
+  background: green;
+}
+.navMenu ul li a {
+  display: flex;
+  height: 100%;
+  padding: 0 30px;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=style01.css.map */
