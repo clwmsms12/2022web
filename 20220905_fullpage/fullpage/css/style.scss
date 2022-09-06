@@ -97,21 +97,21 @@ h2{font-size: 3em;color: $fcolor2;text-shadow: $shadow1;}
         }
         .txt2{
             h2:nth-child(1){
-                animation: txtAni21 2s alternate forwards;
+                animation: txtAni21 1.5s alternate forwards;
                 animation-delay: 1s;
             }
             h2:nth-child(2){
-                animation: txtAni22 2s alternate forwards;
+                animation: txtAni22 1.5s alternate forwards;
                 animation-delay: 1s;
             }
         }
         .txt3{
             h2:nth-child(1){
-                animation: txtAni31 2s alternate forwards;
+                animation: txtAni31 1.0s alternate forwards;
                 animation-delay: 2s;
             }
             h2:nth-child(2){
-                animation: txtAni32 2s alternate forwards;
+                animation: txtAni32 1.0s alternate forwards;
                 animation-delay: 2s;
             }
         }

@@ -205,26 +205,26 @@ h2 {
           animation: txtAni1 1.5s alternate forwards;
 }
 .wrap.move .txt2 h2:nth-child(1) {
-  -webkit-animation: txtAni21 2s alternate forwards;
-          animation: txtAni21 2s alternate forwards;
+  -webkit-animation: txtAni21 1.5s alternate forwards;
+          animation: txtAni21 1.5s alternate forwards;
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
 .wrap.move .txt2 h2:nth-child(2) {
-  -webkit-animation: txtAni22 2s alternate forwards;
-          animation: txtAni22 2s alternate forwards;
+  -webkit-animation: txtAni22 1.5s alternate forwards;
+          animation: txtAni22 1.5s alternate forwards;
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
 .wrap.move .txt3 h2:nth-child(1) {
-  -webkit-animation: txtAni31 2s alternate forwards;
-          animation: txtAni31 2s alternate forwards;
+  -webkit-animation: txtAni31 1s alternate forwards;
+          animation: txtAni31 1s alternate forwards;
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 }
 .wrap.move .txt3 h2:nth-child(2) {
-  -webkit-animation: txtAni32 2s alternate forwards;
-          animation: txtAni32 2s alternate forwards;
+  -webkit-animation: txtAni32 1s alternate forwards;
+          animation: txtAni32 1s alternate forwards;
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 }
