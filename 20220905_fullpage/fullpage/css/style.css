@@ -225,8 +225,8 @@ h2 {
 .wrap.move .txt3 h2:nth-child(2) {
   -webkit-animation: txtAni32 1s alternate forwards;
           animation: txtAni32 1s alternate forwards;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 2.31s;
+          animation-delay: 2.31s;
 }
 
 .page1 .txtWrap {
