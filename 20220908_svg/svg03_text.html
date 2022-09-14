@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box{
+            background: #ddd;
+            width: 300px;height: 200px;
+        }
+        .txt1{
+            fill:#f00;
+            stroke: #000;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .cir1{
+            fill:#fff;
+            transform: translate(10px,10px);
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="box">
+        <svg width="300" height="200">
+            <defs>
+                <mask id="mText">
+                    <circle cx="0" cy="0" r="30" class="cir1"></circle>
+                </mask>
+            </defs>
+            <g mask="url(#mText)">
+                <text x="0" y="32" class="txt1">Lorem, 
+                    <tspan x="0" y="60">ipsum dolor sit amet consectetur adipisicing elit.</tspan>
+                    <tspan x="0" y="90">Minima, eaque.</tspan>
+                </text>
+            </g>
+        </svg>
+    </div>
+
+    <script>
+        const boxElem = document.querySelector(".box");
+        const cirElem = document.querySelector(".cir1");
+
+        boxElem.addEventListener("mousemove",function(event){
+            console.log("x:"+event.clientX, "y:"+event.clientY)
+            cirElem.style.transform = `translate(${event.clientX}px,${event.clientY}px)`
+        })
+    </script>
+
+</body>
+</html>

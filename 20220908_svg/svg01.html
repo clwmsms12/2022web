@@ -7,41 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>svg01</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
     <style>
         .box {
             width: 800px;
             height: 800px;
-            background: url(test.svg);
+            background: url(test.svg)
         }
 
         .box2 {
             width: 200px;
-            height: 200px;
+            height: 200px
         }
 
         .cir {
             fill: red;
             stroke: blue;
+            /* stroke-width:10; */
+
         }
     </style>
 </head>
 
 <body>
-
     <svg width="100" height="100">
-        <circle class="cir" cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+        <circle class="cir" cx="50" cy="50" r="40" />
     </svg>
+
 
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 200 200">
         <style>
             .st2,
             .st3 {
                 fill: none;
-                stroke: #000;
-                stroke-miterlimit: 10
+                stroke: #000
             }
 
             .st2 {
@@ -54,14 +54,13 @@
             }
 
             .hair1 {
-                fill: greenyellow;
+                fill: green;
                 stroke: #000;
                 stroke-width: 3;
                 stroke-dasharray: 10px;
-                stroke-linecap: round;
                 stroke-dashoffset: 10px;
+                stroke-linecap: round
             }
-
         </style>
         <path class="hair1"
             d="M179.8 101.1c0 47.3-35.7 69.7-79.8 69.7s-79.8-22.4-79.8-69.7S56 15.5 100 15.5s79.8 38.3 79.8 85.6z" />
@@ -74,40 +73,97 @@
         <path class="st3" d="M88 165.4s3.1-12.2 14.5-12.2 12.2 10.2 12.2 10.2" />
     </svg>
 
-    <!-- <div class="box2"><img src="test.svg" alt=""></div>
-
+    <!-- <div class="box2">
+        <img src="test.svg" alt="">
+    </div>
     <div class="box">
-
-    </div> -->
+    </div>
+    <img src="icon.svg" alt=""> -->
 
     <img src="img/circle.svg" alt="">
 
-    <div class="box3">
-        <svg version="1.1" id="cir1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px" y="0px" viewBox="0 0 283.46 283.46" style="enable-background:new 0 0 283.46 283.46;"
-            xml:space="preserve">
-            
-            <circle class="st0" cx="141.73" cy="143.12" r="121.45" />
-        </svg>
-    </div>
     <style type="text/css">
         .st0 {
-            fill: #3E93C9;
+            fill: #0c89b3;
             stroke: #000000;
+            stroke-width: 4;
             stroke-linecap: round;
             stroke-dasharray: 256;
             stroke-dashoffset: 256;
-            animation: sAni 1s forwards alternate
+            animation: sAni 2s forwards alternate
         }
+
         @keyframes sAni {
-            0%{}
+            100% {
+                stroke-dashoffset: 0;
+            }
+
+        }
+
+        /* .st0:hover{
+            fill:red;
+            stroke-width:10;
+            stroke-dasharray: 255.3;
+        } */
+    </style>
+    <div class="box3">
+        <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40.7" class="st0">
+        </svg>
+    </div>
+    <!-- document.querySelector(".st0").getTotalLength() / 255.3 -->
+
+    <style>
+        .box4 .st1 {
+            fill: none;
+            stroke: blue;
+            stroke-width: 30;
+            /* stroke-linecap: round; */
+            stroke-dasharray: 180;
+            stroke-dashoffset: 180;
+            animation:sAni2 2s alternate forwards linear
+        }
+        @keyframes sAni2 {
+            100%{
+                stroke-dashoffset: 90;
+            }
+        }
+
+    </style>
+    <div class="box4">
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100"
+            xml:space="preserve">
+            <path class="st1"
+                d="M50.1 21.3c15.5.3 28.6 13.1 28.6 28.7 0 15.9-12.9 28.7-28.7 28.7S21.3 65.9 21.3 50c0-15.6 13.2-28.3 28.8-28.7"
+             />
+        </svg>
+    </div>
+
+    <style>
+        .line1{
+            fill:none;
+            stroke:#ccc;stroke-width:2;
+            stroke-linecap: round;
+            stroke-dasharray: 441;
+            stroke-dashoffset: 441;
+            
+        }
+        @keyframes lineAni1 {
             100%{stroke-dashoffset: 0;}
         }
-        .st0:hover{
-            fill:red;
-            stroke-width: 5;
+
+        .box5.active .line1{
+            animation: lineAni1 2s alternate forwards linear
         }
     </style>
+
+    <div class="box5">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve">
+            <path class="line1" d="M9.9 39.6s19.8-1.8 24.5 7.5 32 21.1 32.4 21.3 33.1 2.6 28.8-30S45 23.2 45 23.2 1.6 51.4 12.6 68.4 51 92.6 63.8 90.1 82.3 61.8 75 52 57.8 32.1 51.8 31.8c-6-.3-16.6 10-22.6 19.4s21.1 29.4 22.3 29.5" >
+          </svg>
+    </div>
 
 </body>
 
