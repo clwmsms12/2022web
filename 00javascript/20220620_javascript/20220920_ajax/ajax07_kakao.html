@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax07_kakao</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="card">
+        <div class="search">
+            <input type="text" class="inp-search" placeholder="search">
+            <div class="btnIcon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        </div>
+    </div>
+
+    <ul class="list">
+        
+    </ul>
+
+<script>
+goSearch("검색해봐")
+    function goSearch(loc){
+        axios
+            .get("https://dapi.kakao.com/v2/search/web?query="+ loc +"&sort=recency&size=10",
+                {
+                    headers:{ Authorization: 'KakaoAK ccb4a45804e08a9a5324bb128e3633af' }
+                }
+            )
+            .then(onResult)
+            .catch(onError)
+    }
+    function onResult(v){
+        console.log(v.data.documents)
+
+        let list = ""
+        for(i=0;i<v.data.documents.length;i++){
+            list += `<li>
+                        <a href="${v.data.documents[i].url}">
+                            <h3>${v.data.documents[i].title}</h3>
+                            <p>${v.data.documents[i].contents}</p>
+                            <a>${v.data.documents[i].url}</a>
+                        </a>
+                    </li>`
+        }
+        $(".list").html(list)
+    }
+    function onError(error){
+        console.log("error")
+    }
+
+    $(".search").keyup(function(e){
+        if(e.key == "Enter"){
+            console.log("ok")
+
+            let value = $(".inp-search").val();
+
+            if(value == ""){
+                alert("검색어를 입력하세요.")
+            }else{
+                goSearch(value)
+                $(".inp-search").val("").focus()
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
