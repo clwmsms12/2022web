@@ -6,75 +6,83 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ajax07_kakao</title>
-
+    
     <style>
-        * {
-            padding: 0;
-            margin: 0;
+        *{ 
+            padding: 0;margin: 0;
             box-sizing: border-box;
         }
-
-        a:link,
-        a:visited {
+        a:link,a:visited{ 
             text-decoration: none;
-            color: #333
+            color:#333
         }
-
-        .list .date {
-            color: #aaa;
+        .list .date{ 
+            color:#aaa;
             align-self: flex-end;
         }
-
-        .list li {
+        .list li{ 
             display: flex;
             flex-direction: column;
             margin-bottom: 20px;
         }
-
-        .wrap {
+        .wrap{ 
             width: 1000px;
             margin: 0 auto;
             padding: 20px 25px;
             background: #eee;
         }
-        .search{
+        .search{ 
             display: flex;
             gap:10px;
             margin-bottom: 40px;
         }
-        .search .inp-search{
-            flex: 1 0 auto;
+        .search .inp-search{ 
+            flex:1 0 auto;
             padding: 10px;
             font-size: 1.3em;
             border-radius: 30px;
             text-indent: 20px;
         }
-        .search .btnIcon{
-            width: 45px;height: 45px;
-            background: white;color: #333;
+        .search .btnIcon{ 
+            width: 45px;height: 45px;background: greenyellow;
+            color:#333;
             display: flex;justify-content: center;align-items: center;
-            border-radius: 50%;
+            border-radius:50%;
             align-self: center;
         }
+        .paging .pageWrap{display: flex;}
+        .paging{
+            display: flex;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        .paging a{
+            display: flex;justify-content: center;align-items: center;
+            width: 40px;height: 40px;
+            font-size: 1.5em;
+            margin-right: 10px;
+            border-radius: 20px;
+        }
+        .paging a.active{
+            background: skyblue;
+        }
     </style>
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
         integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/ko.min.js"
-        integrity="sha512-3kMAxw/DoCOkS6yQGfQsRY1FWknTEzdiz8DOwWoqf+eGRN45AmjS2Lggql50nCe9Q6m5su5dDZylflBY2YjABQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="js/moment.min.js"></script>
+    
+   <script src="js/moment.min.js"></script>  
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/ko.min.js" integrity="sha512-3kMAxw/DoCOkS6yQGfQsRY1FWknTEzdiz8DOwWoqf+eGRN45AmjS2Lggql50nCe9Q6m5su5dDZylflBY2YjABQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>     
 </head>
 
 <body>
 
     <div class="wrap">
         <div class="search">
-            <input type="text" class="inp-search" placeholder="검색어를 입력하세요.">
+            <input type="text" class="inp-search" placeholder="검색어를 입력하세요">
             <div class="btnIcon"><i class="fa-solid fa-magnifying-glass"></i></div>
         </div>
         <ul class="list">
@@ -87,49 +95,60 @@
                     2022/09/22
                 </p>
             </li> -->
+            
         </ul>
-        <div class="pageing">
-            <a href="#" onclick="sView('이효리',1)">1</a>
-            <a href="#" onclick="sView('이효리',2)">2</a>
+        <div class="paging">
+            <div class="prev"><</div>
+            <div class="pageWrap">
+
+            </div>
+            <div class="next">></div>
         </div>
     </div>
     <script>
-        let page = 1;
+        let page=1; //50page
+        let size=5;  //출력개수
         let query;
         let kakaoUrl = 'https://dapi.kakao.com/v2/search/web'
 
 
-        sView("이효리")
+
+        //sView("코로나")
+
         function sView(query){
             axios
-                .get(getPath(),getParams(query))
-                .then(onResult)
-                .catch(onError);
+            .get(getPath(),getParmas(query))
+            .then(onResult)
+            .catch(onError);
         }
 
         function getPath(){
-            return kakaoUrl
+            return kakaoUrl;
         }
 
-        function getParams(query){
-            return{
-                params:{ query:query, size:10, page:page, sort:"recency" },
+        function getParmas(query,page){
+            return {
+                params: { query:query, size:size, page:page, sort:"recency"},
                 headers: { Authorization: "KakaoAK ccb4a45804e08a9a5324bb128e3633af" }
             }
         }
+        
 
         function onResult(v) {
-            //console.log(v.data.documents);
+            console.log(v.data.meta.pageable_count);
+
+            setPager(v.data.meta.pageable_count);   //paging function
+
             let sData = v.data.documents;
 
             // for(let i=0;i<sData.length;i++){
             //     console.log(sData[i].title)
             // }
-
+            
             let sList = ""
-            sData.forEach(function (item, i) {
-                console.log(sData[i])
-                console.log(item.datetime)
+            sData.forEach(function(item,i){
+                //console.log(sData[i])
+                //console.log(item.datetime)
                 sList += `
                             <li>
                                 <h3><a href="${item.url}">${item.title}</a></h3>
@@ -140,6 +159,7 @@
                                     ${moment(item.datetime).format('YYYY/MM/DD dddd')}
                                 </p>
                             </li>
+                            
                             `
             })
 
@@ -151,12 +171,71 @@
 
         $(".btnIcon").click(function(){
             console.log($(".inp-search").val())
-
-            let query = $(".inp-search").val();
-            sView(query);
+            query = $(".inp-search").val()
+            sView(query)
         })
-    </script>
 
+        function onPageClick(page){
+            axios
+            .get(getPath(),getParmas(query,page))
+            .then(onResult)
+            .catch(onError);
+        }
+
+        function setPager(totalRecord){
+            page = Number(page);
+
+            let totalPage =  Math.ceil(totalRecord / size);
+
+            if(page > totalPage){page=totalPage}
+
+            let pagerCnt = 5;   //페이지개수 1 2 3 4 5
+            let startPage;
+            let endPage;
+
+            startPage = Math.floor((page - 1) / pagerCnt) * pagerCnt + 1;
+            endPage = startPage + pagerCnt - 1;
+
+            let pageNum = "";
+            for(let i=startPage;i<=endPage;i++){
+                if(page === i){
+                    pageNum += `<a href="#" onclick="onPageClick(${i})" class="active">${i}</a>`
+                }else{
+                    pageNum += `<a href="#" onclick="onPageClick(${i})">${i}</a>`
+                }
+            }
+            
+            if(totalPage === 0){
+                $(".pageWrap").empty().html("자료가 없습니다.");
+            }else{
+                $(".pageWrap").html(pageNum)
+            }
+        }
+        $(".next").click(function(){
+            page = page + 1;
+
+            if(page > 50){page = 50}
+            console.log(page)
+            axios
+            .get(getPath(),getParmas(query,page))
+            .then(onResult)
+            .catch(onError);
+        })
+        $(".prev").click(function(){
+            page = page - 1;
+
+            if(page ===0){page = 1}
+            console.log(page)
+            axios
+            .get(getPath(),getParmas(query,page))
+            .then(onResult)
+            .catch(onError);
+        })
+
+
+
+    </script>
+    
 </body>
 
 </html>
