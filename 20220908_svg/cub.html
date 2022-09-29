@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cup</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .wrap {
+            width: 400px;
+        }
+
+        .water1 {
+            fill: #3ddaf4;
+            animation: wAni1 3s alternate forwards linear;
+        }
+        .water2 {
+            fill: #527981;
+            animation: wAni2 3s alternate forwards linear;
+            
+           
+            
+        }
+
+        @keyframes wAni1 {
+            0%{transform: translate(-30px,85px) scaleY(0.5);}
+            20%{transform: translate(0px,15px) scaleY(1);}
+            100%{transform: translate(80px,50px) scaleY(0.4);}
+            
+        }
+        @keyframes wAni2 {
+            0%{transform: translate(40px,90px) scaleY(0.5);}
+            20%{transform: translate(20px,10px) scaleY(1);fill: #527981;}
+            100%{transform: translate(-60px,50px) scaleY(0.4);fill: #3ddaf4;}
+            
+        }
+
+
+        .cupmask{ 
+            fill:#eee;
+            /* stroke: #000; */
+        }
+
+        .st1,.st2,.st3,.st4 {
+            fill: #fff;
+            stroke: #000;
+            stroke-miterlimit: 10
+        }
+
+        .st2,.st3,.st4 {
+            fill: none
+        }
+
+        .st3,.st4 {
+            stroke-width: 1.0488
+        }
+
+        .st4 {
+            fill: #fff;
+            stroke-width: 1.3002
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 300 300"
+            style="enable-background:new 0 0 300 300" xml:space="preserve">
+            <defs>
+                <mask id="cup">
+                    <path class="cupmask" d="M93.5 46c.2 39.8 25.4 110 56.5 110s56.3-70.2 56.5-110h-113z" />    
+                </mask>
+            </defs>
+            
+            <path class="st1" d="M93.5 46c.2 39.8 25.4 110 56.5 110s56.3-70.2 56.5-110h-113z" />
+            <path class="st2" d="M150 156.5v89" />
+            <ellipse class="st3" cx="149.5" cy="245.5" rx="45" ry="11" />
+            <ellipse class="st4" cx="150" cy="45" rx="56.5" ry="13.5" />
+            <g mask="url(#cup)">
+                <path class="water2" d="M284.4 73.5c-13.6 0-13.6 8.5-27.2 8.5s-13.6-8.5-27.2-8.5-13.6 8.5-27.2 8.5-13.6-8.5-27.2-8.5S162 82 148.4 82s-13.6-8.5-27.2-8.5S107.6 82 94 82s-13.6-8.5-27.2-8.5S53.2 82 39.6 82 26 73.5 12.4 73.5V265h273l-1-191.5z"/>
+                <path class="water1" d="M284.4 73.5c-13.6 0-13.6 8.5-27.2 8.5s-13.6-8.5-27.2-8.5-13.6 8.5-27.2 8.5-13.6-8.5-27.2-8.5S162 82 148.4 82s-13.6-8.5-27.2-8.5S107.6 82 94 82s-13.6-8.5-27.2-8.5S53.2 82 39.6 82 26 73.5 12.4 73.5V265h273l-1-191.5z"/>
+            </g> 
+        </svg>
+    </div>
+</body>
+
+</html>
